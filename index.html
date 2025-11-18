@@ -1,182 +1,546 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAT Cargo VAD LLC</title>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            color: #333;
-        }
-        nav {
-            background: #000;
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        nav .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            padding: 80px 20px;
-            background: #111;
-            color: #fff;
-            min-height: 100vh;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .hero-text {
-            max-width: 500px;
-            padding: 20px;
-            animation: slideInLeft 1.5s ease;
-        }
-        .hero-text h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        .hero-text p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .hero-img img {
-            max-width: 400px;
-            width: 100%;
-            border-radius: 10px;
-            animation: slideInRight 1.5s ease;
-        }
-        .section {
-            padding: 60px 20px;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease;
-        }
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-        .section p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #555;
-        }
-        .contact {
-            background: #e9e9e9;
-            padding: 60px 20px;
-        }
-        footer {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-        }
+  <meta charset="UTF-8" />
+  <title>AIDES ET FORMATIONS · AI.FOR 13 – Accompagnement & Formations à Marseille</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+        content="AIDES ET FORMATIONS - AI.FOR 13 : accompagnement social, insertion professionnelle et formations à Marseille (13008).">
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideInLeft {
-            from { transform: translateX(-50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideInRight {
-            from { transform: translateX(50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-    </style>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main:#05070b;
+      --bg-card:#081019;
+      --accent-rose:#f26b8a;
+      --accent-blue:#4ea7ff;
+      --accent-soft-rose:rgba(242,107,138,0.3);
+      --accent-soft-blue:rgba(78,167,255,0.3);
+      --text-main:#f8fbff;
+      --text-muted:#b8c4d7;
+      --border-soft:rgba(255,255,255,0.16);
+      --radius-xl:1.6rem;
+      --transition-fast:0.25s ease-out;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:"DM Sans",system-ui,sans-serif;
+      background:
+        radial-gradient(circle at top,#17263b 0,#05070b 55%,#000000 100%);
+      color:var(--text-main);
+      min-height:100vh;
+      overflow-x:hidden;
+      scroll-behavior:smooth;
+    }
+    ::-webkit-scrollbar{width:8px;}
+    ::-webkit-scrollbar-track{background:#020307;}
+    ::-webkit-scrollbar-thumb{
+      background:linear-gradient(to bottom,var(--accent-rose),var(--accent-blue));
+      border-radius:999px;
+    }
+    .max-width{max-width:1120px;margin:0 auto;padding:0 1.6rem;}
+
+    /* HEADER */
+    header{
+      position:sticky;top:0;z-index:40;
+      backdrop-filter:blur(18px);
+      background:linear-gradient(to bottom,rgba(5,8,16,0.96),transparent);
+      border-bottom:1px solid rgba(255,255,255,0.14);
+    }
+    .nav{
+      padding:1rem 0;
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    }
+    .nav-brand{display:flex;align-items:center;gap:.9rem;}
+    .nav-logo{
+      width:44px;height:44px;border-radius:999px;
+      background:
+        radial-gradient(circle at 0 0,var(--accent-rose),transparent 60%),
+        radial-gradient(circle at 100% 100%,var(--accent-blue),transparent 60%);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 0 0 2px rgba(255,255,255,0.16),0 14px 30px rgba(0,0,0,0.9);
+    }
+    .nav-logo span{
+      font-family:"Space Grotesk",sans-serif;
+      font-weight:700;font-size:1.05rem;letter-spacing:.08em;
+    }
+    .nav-text{display:flex;flex-direction:column;gap:.1rem;}
+    .nav-title{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:1.05rem;text-transform:uppercase;letter-spacing:.16em;
+    }
+    .nav-subtitle{
+      font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;
+      color:var(--text-muted);
+    }
+    .nav-links{display:flex;align-items:center;gap:1.3rem;font-size:.85rem;}
+    .nav-links a{
+      color:var(--text-muted);text-decoration:none;position:relative;padding-bottom:3px;
+      transition:color var(--transition-fast);
+    }
+    .nav-links a::after{
+      content:"";position:absolute;left:0;bottom:0;width:0;height:2px;border-radius:999px;
+      background:linear-gradient(to right,var(--accent-rose),var(--accent-blue));
+      transition:width var(--transition-fast);
+    }
+    .nav-links a:hover{color:var(--text-main);}
+    .nav-links a:hover::after{width:100%;}
+    .nav-cta{
+      font-size:.75rem;text-transform:uppercase;letter-spacing:.18em;
+      border-radius:999px;padding:.45rem 1.25rem;
+      border:1px solid rgba(255,255,255,0.22);
+      background:linear-gradient(135deg,rgba(242,107,138,0.3),rgba(78,167,255,0.3));
+      color:var(--text-main);cursor:pointer;
+      display:inline-flex;align-items:center;gap:.4rem;
+      transition:background var(--transition-fast),transform var(--transition-fast),box-shadow var(--transition-fast);
+    }
+    .nav-cta:hover{
+      background:linear-gradient(135deg,var(--accent-rose),var(--accent-blue));
+      transform:translateY(-1px);box-shadow:0 16px 34px rgba(0,0,0,0.95);
+    }
+
+    /* HERO */
+    .hero{padding:3.1rem 0 3.6rem;}
+    .hero-grid{
+      display:grid;grid-template-columns:minmax(0,3.1fr) minmax(0,2.4fr);
+      gap:3.1rem;align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:.55rem;
+      padding:.35rem .9rem;border-radius:999px;
+      background:rgba(5,10,18,0.96);
+      border:1px solid rgba(255,255,255,0.18);
+      font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;
+      color:var(--text-muted);margin-bottom:1.1rem;
+    }
+    .eyebrow-dot{
+      width:8px;height:8px;border-radius:999px;
+      background:radial-gradient(circle,var(--accent-rose),var(--accent-blue));
+      box-shadow:0 0 14px rgba(242,107,138,0.9);
+    }
+    .hero-title{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:clamp(2.4rem,4.1vw,3.2rem);
+      line-height:1.05;margin-bottom:1rem;letter-spacing:.01em;
+      text-shadow:0 18px 38px rgba(0,0,0,0.95);
+    }
+    .hero-title span{
+      background:linear-gradient(120deg,var(--accent-rose),var(--accent-blue));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .hero-subtitle{
+      font-size:.98rem;color:var(--text-muted);
+      max-width:34rem;line-height:1.7;margin-bottom:1.8rem;
+    }
+    .hero-tags{
+      display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:2rem;
+    }
+    .tag-pill{
+      font-size:.78rem;
+      padding:.45rem .95rem;border-radius:999px;
+      border:1px solid rgba(255,255,255,0.16);
+      background:radial-gradient(circle at top left,var(--accent-soft-rose),transparent 70%);
+      color:var(--text-muted);display:inline-flex;align-items:center;gap:.45rem;
+    }
+    .tag-pill span.dot{
+      width:6px;height:6px;border-radius:999px;background:var(--accent-blue);
+    }
+    .hero-actions{display:flex;flex-wrap:wrap;gap:.95rem;margin-bottom:1.6rem;}
+    .btn-primary,.btn-ghost{
+      border-radius:999px;padding:.75rem 1.7rem;
+      cursor:pointer;font-size:.82rem;text-transform:uppercase;letter-spacing:.18em;
+      border:1px solid transparent;
+      display:inline-flex;align-items:center;gap:.55rem;
+      transition:transform var(--transition-fast),box-shadow var(--transition-fast),
+                 background var(--transition-fast),border-color var(--transition-fast),color var(--transition-fast);
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent-rose),var(--accent-blue));
+      color:#05070b;box-shadow:0 18px 34px rgba(0,0,0,0.95);
+    }
+    .btn-primary:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 24px 44px rgba(0,0,0,1);}
+    .btn-ghost{
+      border-color:rgba(255,255,255,0.26);background:rgba(5,10,18,0.97);color:var(--text-main);
+    }
+    .btn-ghost:hover{
+      background:rgba(5,10,18,1);border-color:var(--accent-rose);transform:translateY(-1px);
+    }
+    .hero-meta{
+      display:flex;flex-wrap:wrap;gap:2.1rem;font-size:.82rem;color:var(--text-muted);
+    }
+    .meta-label{
+      font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;color:rgba(220,231,247,0.96);
+    }
+    .meta-value a{color:var(--accent-rose);text-decoration:none;}
+    .meta-value a:hover{text-decoration:underline;}
+
+    .hero-visual{position:relative;}
+    .hero-card{
+      border-radius:var(--radius-xl);
+      padding:1.1rem 1.1rem 1.3rem;
+      border:1px solid var(--border-soft);
+      background:radial-gradient(circle at top,rgba(255,255,255,0.08),rgba(7,13,25,0.99));
+      box-shadow:0 18px 40px rgba(0,0,0,0.96);
+      overflow:hidden;position:relative;
+    }
+    .hero-chip{
+      position:absolute;inset:1.1rem 1.1rem auto auto;
+      padding:.3rem .8rem;border-radius:999px;
+      font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;
+      background:rgba(5,10,18,0.98);border:1px solid rgba(255,255,255,0.3);
+      z-index:2;
+    }
+    .hero-images-grid{
+      display:grid;grid-template-columns:2fr 1.3fr;gap:.8rem;position:relative;z-index:1;
+    }
+    .hero-img-main,.hero-img-small{
+      border-radius:1.25rem;overflow:hidden;position:relative;isolation:isolate;
+    }
+    .hero-img-main{height:250px;}
+    .hero-img-small{height:115px;}
+    .hero-img-main img,.hero-img-small img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      filter:contrast(1.05) saturate(1.06);
+      transform-origin:center;transition:transform .8s ease-out;
+    }
+    .hero-card:hover .hero-img-main img{transform:scale(1.06);}
+    .hero-card:hover .hero-img-small img{transform:scale(1.08);}
+    .hero-floating{
+      position:absolute;right:.7rem;bottom:.6rem;width:60%;
+      transform:translateY(10%);
+      border-radius:1.3rem;padding:.85rem .95rem;
+      background:rgba(5,10,18,0.98);border:1px solid rgba(255,255,255,0.22);
+      box-shadow:0 18px 40px rgba(0,0,0,0.98);
+      font-size:.78rem;color:var(--text-muted);
+    }
+    .floating-title{font-size:.9rem;margin-bottom:.25rem;color:var(--text-main);}
+    .floating-badges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem;margin-top:.5rem;}
+    .floating-badge{
+      padding:.38rem .45rem;border-radius:.9rem;font-size:.7rem;
+      border:1px solid rgba(242,107,138,0.9);
+      background:radial-gradient(circle at top left,var(--accent-soft-rose),transparent 70%);
+    }
+
+    /* SECTIONS */
+    section{padding:2.6rem 0 0;}
+    .section-header{
+      display:flex;justify-content:space-between;align-items:flex-end;
+      gap:1.2rem;margin-bottom:1.9rem;
+    }
+    .section-kicker{
+      font-size:.76rem;text-transform:uppercase;letter-spacing:.2em;color:var(--text-muted);
+    }
+    .section-title{
+      font-family:"Space Grotesk",sans-serif;font-size:1.7rem;
+    }
+    .section-text{
+      font-size:.9rem;color:var(--text-muted);max-width:32rem;line-height:1.6;
+    }
+
+    .cards-grid{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.05rem;
+    }
+    .info-card{
+      border-radius:1.3rem;padding:1.05rem 1rem 1.15rem;
+      border:1px solid var(--border-soft);
+      background:radial-gradient(circle at top,rgba(255,255,255,0.04),rgba(7,14,26,0.98));
+      box-shadow:0 14px 34px rgba(0,0,0,0.9);
+      font-size:.84rem;color:var(--text-muted);
+      transition:transform var(--transition-fast),box-shadow var(--transition-fast),border-color var(--transition-fast);
+    }
+    .info-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 20px 46px rgba(0,0,0,0.98);
+      border-color:rgba(242,107,138,0.9);
+    }
+    .info-card-title{font-size:.98rem;margin-bottom:.35rem;color:var(--text-main);}
+
+    .gallery-grid{
+      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;
+      margin-top:1.7rem;
+    }
+    .gallery-grid img{
+      width:100%;height:130px;border-radius:.9rem;object-fit:cover;
+      filter:brightness(0.96);transition:transform .4s ease,filter .4s ease;
+    }
+    .gallery-grid img:hover{transform:scale(1.06);filter:brightness(1.08);}
+
+    /* CONTACT */
+    .contact-section{margin-bottom:3.2rem;}
+    .contact-card{
+      border-radius:var(--radius-xl);
+      padding:1.6rem 1.8rem 1.85rem;
+      border:1px solid rgba(242,107,138,0.9);
+      background:radial-gradient(circle at top,rgba(242,107,138,0.2),rgba(7,13,25,1));
+      box-shadow:0 18px 42px rgba(0,0,0,0.96);
+      display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1.3fr);
+      gap:2.1rem;align-items:center;
+      font-size:.9rem;
+    }
+    .contact-grid{
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.95rem 1.6rem;
+      font-size:.86rem;
+    }
+    .info-label{
+      font-size:.76rem;text-transform:uppercase;letter-spacing:.17em;color:rgba(30,12,15,0.96);
+    }
+    .info-value a{
+      color:#210b0f;text-decoration:none;border-bottom:1px solid rgba(33,11,15,0.35);
+    }
+    .info-value a:hover{border-color:rgba(33,11,15,0.85);}
+    .contact-note{
+      border-radius:1.2rem;padding:1rem 1.1rem;
+      background:rgba(5,10,18,0.98);border:1px solid rgba(255,255,255,0.25);
+      font-size:.83rem;color:var(--text-muted);
+    }
+
+    footer{
+      border-top:1px solid rgba(255,255,255,0.14);
+      padding:1.6rem 0 2rem;
+      font-size:.78rem;color:var(--text-muted);
+    }
+    .footer-row{
+      display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap;
+    }
+
+    /* Responsive */
+    @media(max-width:960px){
+      .hero-grid{grid-template-columns:minmax(0,1fr);}
+      .hero-visual{order:-1;}
+      .cards-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+      .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+      .contact-card{grid-template-columns:minmax(0,1fr);}
+    }
+    @media(max-width:780px){
+      .nav-links{display:none;}
+      .cards-grid{grid-template-columns:minmax(0,1fr);}
+      .gallery-grid{grid-template-columns:minmax(0,1fr);}
+    }
+  </style>
 </head>
 <body>
-
-    <nav>
-        <div class="logo">PAT Cargo VAD LLC</div>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <div class="hero" id="home">
-        <div class="hero-text">
-            <h1>PAT Cargo VAD LLC</h1>
-            <p>Your trusted partner in transportation and warehousing. We provide reliable cargo services and storage solutions to meet your business needs with efficiency and care.</p>
+  <header>
+    <div class="max-width">
+      <nav class="nav">
+        <div class="nav-brand">
+          <div class="nav-logo"><span>AF</span></div>
+          <div class="nav-text">
+            <div class="nav-title">AIDES ET FORMATIONS</div>
+            <div class="nav-subtitle">AI.FOR 13 · Accompagnement & insertion</div>
+          </div>
         </div>
-        <div class="hero-img">
-            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=934&q=80" alt="Cargo Services">
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#accompagnement">Accompagnement</a>
+          <a href="#contact">Contact</a>
+          <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            Être rappelé·e
+          </button>
         </div>
+      </nav>
     </div>
+  </header>
 
-    <div class="section" id="about">
-        <h2>About Us</h2>
-        <p>PAT Cargo VAD LLC is a Domestic LLC based in Arizona, offering specialized services in transportation and warehousing. With a focus on reliability and customer satisfaction, we have been serving businesses since 2021.</p>
-        <p><strong>Registered Address:</strong><br>
-        2902 W Sweetwater Ave, Apt 2190, Phoenix, AZ 85029, United States</p>
+  <main class="max-width">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            69 RUE DU ROUET · 13008 MARSEILLE · PROVENCE-ALPES-CÔTE D’AZUR
+          </div>
+          <h1 class="hero-title">
+            <span>Aides et formations</span> pour avancer dans son projet de vie et d’emploi.
+          </h1>
+          <p class="hero-subtitle">
+            <strong>AIDES ET FORMATIONS – AI.FOR 13</strong> accompagne les personnes
+            vers plus d’autonomie&nbsp;: soutien social, construction de projet
+            professionnel, formations et ateliers dans le 8ᵉ arrondissement de Marseille.
+          </p>
+          <div class="hero-tags">
+            <div class="tag-pill"><span class="dot"></span>Accompagnement social</div>
+            <div class="tag-pill"><span class="dot"></span>Insertion & emploi</div>
+            <div class="tag-pill"><span class="dot"></span>Formations & ateliers</div>
+          </div>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+              Découvrir les actions
+            </button>
+            <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              Contacter l’équipe
+            </button>
+          </div>
+          <div class="hero-meta">
+            <div>
+              <div class="meta-label">Coordonnées</div>
+              <div class="meta-value">
+                <a href="mailto:sales@novelto.shop">sales@novelto.shop</a><br>
+                <a href="tel:+333777421922">+33 7 77 42 19 22</a>
+              </div>
+            </div>
+            <div>
+              <div class="meta-label">Public accompagné</div>
+              <div class="meta-value">Adultes, personnes en reconversion, publics fragilisés ou éloignés de l’emploi.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-chip">AI.FOR 13 · Parcours d’accompagnement</div>
+            <div class="hero-images-grid">
+              <div class="hero-img-main">
+                <img src="https://goaudits.com/wp-content/uploads/2024/12/CQC-compliance.jpg"
+                     alt="Document de suivi et conformité qualité">
+              </div>
+              <div style="display:flex;flex-direction:column;gap:.8rem;">
+                <div class="hero-img-small">
+                  <img src="https://avatars.mds.yandex.net/get-altay/892711/2a00000164ef89ea18266e78daf4f2f14ff0/XXL_height"
+                       alt="Bâtiment en ville">
+                </div>
+                <div class="hero-img-small">
+                  <img src="https://leadingage.org/wp-content/uploads/2022/09/rural-couple-meet-aide-door-1200x776-1.jpg"
+                       alt="Intervenante sociale avec un couple">
+                </div>
+              </div>
+            </div>
+            <div class="hero-floating">
+              <div class="floating-title">Un accompagnement sur mesure</div>
+              <div>
+                Entretiens individuels, ateliers collectifs, liens avec les structures
+                de santé, de formation et d’emploi&nbsp;: l’équipe construit avec chaque
+                personne un parcours adapté.
+              </div>
+              <div class="floating-badges">
+                <div class="floating-badge">Écoute, confidentialité et bienveillance.</div>
+                <div class="floating-badge">Travail en réseau avec les partenaires locaux.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Nos services</div>
+          <h2 class="section-title">Des réponses concrètes aux besoins du quotidien</h2>
+        </div>
+        <p class="section-text">
+          AIDES ET FORMATIONS intervient à l’interface entre le social, la santé
+          et l’insertion professionnelle, pour sécuriser les parcours et faciliter
+          l’accès aux droits et à l’emploi.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="info-card-title">Accompagnement social global</div>
+          Accès aux droits, démarches administratives, orientation vers les services
+          adaptés, coordination avec les partenaires sociaux et médico-sociaux.
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Insertion & projet professionnel</div>
+          Bilan de situation, identification des compétences, construction de projet,
+          appui à la recherche d’emploi ou de formation, liens avec les employeurs.
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Formations & ateliers</div>
+          Ateliers collectifs (numérique, savoir-être, CV/lettres), sensibilisation,
+          sessions thématiques en lien avec les besoins du terrain et des publics.
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCOMPAGNEMENT / GALERIE -->
+    <section id="accompagnement">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Marseille 8ᵉ</div>
+          <h2 class="section-title">Un lieu ressource au cœur de la ville</h2>
+        </div>
+        <p class="section-text">
+          Située rue du Rouet, l’équipe reçoit, oriente et accompagne dans un cadre
+          rassurant, tout en travaillant en proximité avec le quartier et les
+          partenaires du territoire.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <img src="https://goaudits.com/wp-content/uploads/2024/12/CQC-compliance.jpg" alt="Suivi qualité">
+        <img src="https://avatars.mds.yandex.net/get-altay/892711/2a00000164ef89ea18266e78daf4f2f14ff0/XXL_height" alt="Bâtiment en ville">
+        <img src="https://leadingage.org/wp-content/uploads/2022/09/rural-couple-meet-aide-door-1200x776-1.jpg" alt="Accompagnement à domicile">
+        <img src="https://avatars.mds.yandex.net/i?id=b7f735ac23a5e0667bc06b3c61fc712c273f43f8-16319996-images-thumbs&n=13" alt="Rencontre et écoute">
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+      <div class="contact-card">
+        <div>
+          <h2 class="section-title">Prendre contact avec AIDES ET FORMATIONS</h2>
+          <p style="margin:0 0 1.2rem;font-size:.9rem;color:var(--text-muted);max-width:32rem;">
+            Pour un premier échange, une orientation, une demande d’information sur
+            un accompagnement ou un partenariat, vous pouvez nous joindre par
+            téléphone ou par mail, ou proposer un créneau pour être rappelé·e.
+          </p>
+
+          <div class="contact-grid">
+            <div>
+              <div class="info-label">Email</div>
+              <div class="info-value">
+                <a href="mailto:sales@novelto.shop">sales@novelto.shop</a>
+              </div>
+            </div>
+            <div>
+              <div class="info-label">Téléphone</div>
+              <div class="info-value">
+                <a href="tel:+333777421922">+33 7 77 42 19 22</a>
+              </div>
+            </div>
+            <div>
+              <div class="info-label">Adresse</div>
+              <div class="info-value">
+                69 rue du Rouet<br>
+                13008 Marseille<br>
+                Provence-Alpes-Côte d’Azur · France
+              </div>
+            </div>
+            <div>
+              <div class="info-label">Exemples de demandes</div>
+              <div class="info-value">
+                Orientation sociale, besoin de formation, questions sur un parcours,
+                proposition de partenariat ou d’action commune.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="contact-note">
+            🤝 <strong>Pour faciliter notre réponse</strong><br>
+            Merci de préciser votre situation (particulier, professionnel, structure),
+            vos coordonnées complètes et, si possible, le type d’accompagnement
+            recherché ou la thématique de votre demande.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="max-width footer-row">
+      <span>© <span id="year"></span> AIDES ET FORMATIONS – AI.FOR 13 · Tous droits réservés.</span>
+      <span>Accompagnement social & formations · Marseille 13008.</span>
     </div>
+  </footer>
 
-    <div class="section contact" id="contact">
-        <h2>Contact Us</h2>
-        <p><strong>Email:</strong> <a href="mailto:contact@patcargovadllc.click">contact@patcargovadllc.click</a></p>
-        <p><strong>Agent Address:</strong><br>
-        2902 W Sweetwater Ave, Apt 2190, Phoenix, AZ 85029, United States</p>
-    </div>
-
-    <footer>
-        &copy; 2025 PAT Cargo VAD LLC. All rights reserved.
-    </footer>
-
-    <script>
-        // Intersection Observer for fade-in effect
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    </script>
-
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
